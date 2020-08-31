@@ -12,6 +12,7 @@ from pip.utils import logging
 from common import opmysql
 from public import config
 
+
 operation_db = opmysql.OperationDbInterface
 class CompareParam(object):
     def __init__(self, param_interface):
@@ -52,7 +53,7 @@ class CompareParam(object):
                         2, self.id_case))
             else:
                 result = {'code': '1000', 'message': '返回包格式不合法', 'data': []}
-                operation_db.op_sql("update case_interface set result_code_compare = '%s'  where id=%s" % (
+                operation_db.op_sql("update case_interface set result_code_compare = '%s'  where id=id_case%s" % (
                     4, self.id_case))
         except Exception as e:
             result = {'code': '9999', 'message': '关键字参数值比较异常', 'data': []}
